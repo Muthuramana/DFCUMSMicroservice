@@ -1,0 +1,22 @@
+﻿@page
+@model Step3Model
+@{
+    ViewData["Title"] = "step 3";
+}
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-3">
+            <h2>@Model.Step.QuestionId - @Model.Step.QuestionDesciption</h2>
+
+            @foreach (var answer in Model.Step.Answers)
+            {
+                <label><input value="@answer" type="checkbox" name="SavedAnswer.SavedAnswers">@answer</label>
+            }
+        </div>
+
+    </div>
+    <button type="submit">Next</button>
+    <input asp-for="SavedAnswer.QuestionId" type="hidden" />
+    <input asp-for="SavedAnswer.SessionId" type="hidden" />
+</form>

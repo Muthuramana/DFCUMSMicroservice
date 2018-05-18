@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  DFC.UMS.Microservice:
+    image: dfcumsmicroservice
+    build:
+      context: .
+      dockerfile: DFC.UMS.Microservice/Dockerfile

@@ -1,0 +1,18 @@
+﻿@page
+@model ResultsModel
+@{
+    ViewData["Title"] = "Results";
+}
+
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>@Model.ResultsMessage</h2>
+        
+        @foreach (var jobProfile in Model.JobProfiles)
+        {
+            <a href=""> @jobProfile.Title </a>
+        }
+    </div>
+
+</div>
