@@ -34,6 +34,8 @@ namespace DFC.UMS.Microservice.Pages
 
             await understandMySelfRepository.SaveStepDetails(StepDetail);
 
+            TaskItems = new List<string> { "Travelling", "public speaking", "public relations", "investigative work", "writing" };
+
             return Page();
         }
     }

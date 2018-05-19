@@ -20,15 +20,22 @@ namespace DFC.UMS.Microservice.Repositories
         {
             var mongoCs = configuration["mongo-cs"];
             var client = new MongoClient(mongoCs);
-            mongoDatabase = client.GetDatabase("SFMicroservices");
+            mongoDatabase = client.GetDatabase("UMSMicroService");
             jobprofileCollection = mongoDatabase.GetCollection<JobProfile>(nameof(JobProfile));
             stepAnswerCollection = mongoDatabase.GetCollection<StepAnswer>(nameof(StepAnswer));
-            stepDetailCollection = mongoDatabase.GetCollection<StepDetail>(nameof(JobProfile));
+            stepDetailCollection = mongoDatabase.GetCollection<StepDetail>(nameof(StepDetail));
 
         }
         public async Task<StepDetail> GetStepByNumber(int number)
         {
-            return await stepDetailCollection.FindAsync(stepdetail => stepdetail.QuestionId.Equals(number)).Result.FirstOrDefaultAsync();
+            var result = await stepDetailCollection.FindAsync(stepdetail => stepdetail.QuestionId.Equals(number));
+
+            if (result != null)
+            {
+                return await result.FirstOrDefaultAsync();
+            }
+
+            return null;
         }
 
         public async Task SaveStepDetails(StepDetail stepDetail)

@@ -8,18 +8,21 @@ namespace DFC.UMS.Microservice.Pages
 {
     public class Step2Model : PageModel
     {
-        private readonly IUnderstandMySelfRepository answerRepo;
+        private readonly IUnderstandMySelfRepository understandMySelfRepository;
 
-        public Step2Model(IUnderstandMySelfRepository answerRepo)
+        public Step2Model(IUnderstandMySelfRepository understandMySelfRepository)
         {
-            this.answerRepo = answerRepo;
+            this.understandMySelfRepository = understandMySelfRepository;
         }
+        [BindProperty]
         public StepAnswer SavedAnswer { get; set; } = new StepAnswer();
 
-        public StepDetail Step { get; set; }
+        [BindProperty]
+        public StepDetail Step { get; set; } = new StepDetail();
+
         public async Task OnGetAsync()
         {
-            Step = await answerRepo.GetStepByNumber(2);
+            Step = await understandMySelfRepository.GetStepByNumber(1);
             SavedAnswer.QuestionId = Step.QuestionId;
             SavedAnswer.SessionId = HttpContext.Session.Id;
         }
@@ -31,7 +34,7 @@ namespace DFC.UMS.Microservice.Pages
                 return Page();
             }
 
-            await answerRepo.SaveAnswer(SavedAnswer);
+            await understandMySelfRepository.SaveAnswer(SavedAnswer);
 
             return RedirectToPage("/Step3");
         }

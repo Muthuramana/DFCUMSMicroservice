@@ -9,16 +9,28 @@
 <form method="POST">
     <div class="row">
         <div class="col-md-3">
-            <label>Step Question</label>
-            <input type="text" asp-for="StepDetail.QuestionDescription" />
+            <p>
+                <label>Step Question</label>
+                <input type="text" asp-for="StepDetail.QuestionDescription"/>
+            </p>
             
-            <label>Question Number</label>
-            <input type="text"  asp-for="StepDetail.QuestionId"/>
-
-            @foreach (var taskItem in Model.TaskItems)
-            {
-                <label><input value="@taskItem" type="checkbox" name="StepDetail.Answers">@taskItem</label>
-            }
+            <p>
+                <label>Question Number</label>
+                <input type="text" asp-for="StepDetail.QuestionId"/>
+            </p>
+            
+            <p>
+                <label>Select task items</label>
+                <input type="text" asp-for="StepDetail.QuestionId"/>
+            </p>
+            <ul>
+                @foreach (var taskItem in Model.TaskItems)
+                {
+                    <li>
+                        <label><input value="@taskItem" type="checkbox" name="StepDetail.Answers">@taskItem</label>
+                    </li>
+                }
+            </ul>
         </div>
 
     </div>

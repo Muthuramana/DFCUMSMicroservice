@@ -20,7 +20,7 @@ namespace DFC.UMS.Microservice.Pages
         public StepAnswer SavedAnswer { get; set; } = new StepAnswer();
 
         [BindProperty]
-        public StepDetail Step { get; set; }
+        public StepDetail Step { get; set; } = new StepDetail();
 
         public async Task OnGetAsync()
         {
