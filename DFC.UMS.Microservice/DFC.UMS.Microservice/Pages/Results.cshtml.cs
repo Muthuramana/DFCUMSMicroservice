@@ -9,11 +9,11 @@ namespace DFC.UMS.Microservice.Pages
 {
     public class ResultsModel : PageModel
     {
-        private readonly IAnswerRepo answerRepo;
+        private readonly IUnderstandMySelfRepository understandMySelfRepository;
 
-        public ResultsModel(IAnswerRepo answerRepo)
+        public ResultsModel(IUnderstandMySelfRepository understandMySelfRepository)
         {
-            this.answerRepo = answerRepo;
+            this.understandMySelfRepository = understandMySelfRepository;
         }
         public string ResultsMessage { get; set; }
 

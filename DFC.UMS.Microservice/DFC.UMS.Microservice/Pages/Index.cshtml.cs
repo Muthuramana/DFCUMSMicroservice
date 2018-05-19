@@ -10,11 +10,11 @@ namespace DFC.UMS.Microservice.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly IAnswerRepo answerRepo;
+        private readonly IUnderstandMySelfRepository understandMySelfRepository;
 
-        public IndexModel(IAnswerRepo answerRepo)
+        public IndexModel(IUnderstandMySelfRepository understandMySelfRepository)
         {
-            this.answerRepo = answerRepo;
+            this.understandMySelfRepository = understandMySelfRepository;
         }
         [BindProperty]
         public StepAnswer SavedAnswer { get; set; } = new StepAnswer();
@@ -22,9 +22,9 @@ namespace DFC.UMS.Microservice.Pages
         [BindProperty]
         public StepDetail Step { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Step = answerRepo.GetStepByNumber(1);
+            Step =  await understandMySelfRepository.GetStepByNumber(1);
             SavedAnswer.QuestionId = Step.QuestionId;
             SavedAnswer.SessionId = HttpContext.Session.Id;
         }
@@ -36,7 +36,7 @@ namespace DFC.UMS.Microservice.Pages
                 return Page();
             }
 
-            await answerRepo.SaveAnswer(SavedAnswer);
+            await understandMySelfRepository.SaveAnswer(SavedAnswer);
 
             return RedirectToPage("/Step2");
         }

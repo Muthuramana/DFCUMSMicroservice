@@ -1,8 +1,19 @@
 version: '3'
 
 services:
-  DFC.UMS.Microservice:
+   mongoumsdb:
+        image: mongo
+        container_name: "mongoUmsContainer"
+        environment:
+          - MONGO_DATA_DIR=/data/db
+          - MONGO_LOG_DIR=/dev/null        
+        ports:
+            - 27017:27017
+
+   DFC.UMS.Microservice:
     image: dfcumsmicroservice
     build:
       context: .
       dockerfile: DFC.UMS.Microservice/Dockerfile
+    depends_on:
+            - mongoumsdb

@@ -1,0 +1,27 @@
+﻿@page
+@model DFC.UMS.Microservice.Pages.ManageStepDetailsModel
+@{
+    ViewData["Title"] = "Manage Step Details";
+}
+
+<h2>Manage Step Details</h2>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Step Question</label>
+            <input type="text" asp-for="StepDetail.QuestionDescription" />
+            
+            <label>Question Number</label>
+            <input type="text"  asp-for="StepDetail.QuestionId"/>
+
+            @foreach (var taskItem in Model.TaskItems)
+            {
+                <label><input value="@taskItem" type="checkbox" name="StepDetail.Answers">@taskItem</label>
+            }
+        </div>
+
+    </div>
+    <button type="submit">Save Step Details</button>
+</form>
+

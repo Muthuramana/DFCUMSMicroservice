@@ -8,18 +8,18 @@ namespace DFC.UMS.Microservice.Pages
 {
     public class Step2Model : PageModel
     {
-        private readonly IAnswerRepo answerRepo;
+        private readonly IUnderstandMySelfRepository answerRepo;
 
-        public Step2Model(IAnswerRepo answerRepo)
+        public Step2Model(IUnderstandMySelfRepository answerRepo)
         {
             this.answerRepo = answerRepo;
         }
         public StepAnswer SavedAnswer { get; set; } = new StepAnswer();
 
         public StepDetail Step { get; set; }
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Step = answerRepo.GetStepByNumber(2);
+            Step = await answerRepo.GetStepByNumber(2);
             SavedAnswer.QuestionId = Step.QuestionId;
             SavedAnswer.SessionId = HttpContext.Session.Id;
         }
