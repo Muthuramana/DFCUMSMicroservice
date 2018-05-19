@@ -22,7 +22,7 @@ namespace DFC.UMS.Microservice.Pages
 
         public async Task OnGetAsync()
         {
-            Step = await understandMySelfRepository.GetStepByNumber(1);
+            Step = await understandMySelfRepository.GetStepByNumber(2);
             SavedAnswer.QuestionId = Step.QuestionId;
             SavedAnswer.SessionId = HttpContext.Session.Id;
         }
