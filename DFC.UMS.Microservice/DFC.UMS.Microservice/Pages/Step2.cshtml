@@ -1,5 +1,4 @@
 ﻿@page
-@using DFC.UMS.Microservice.Pages
 @model Step2Model
 @{
     ViewData["Title"] = "Step 2";
@@ -11,7 +10,7 @@
             <h2>@Model.Step.QuestionId - @Model.Step.QuestionDescription</h2>
             
             <ul>
-                @foreach (var answer in Model.Step.Answers)
+                @foreach (var answer in Model.Answers)
                 {
                     <li> 
                         <label><input value="@answer" type="checkbox"  name="SavedAnswer.SavedAnswers">@answer</label>

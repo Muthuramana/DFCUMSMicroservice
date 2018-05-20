@@ -1,0 +1,62 @@
+﻿@page
+@model DFC.UMS.Microservice.Pages.ManageJobProfileModel
+@{
+    ViewData["Title"] = "ManageJobProfile";
+}
+
+<h2>Manage JobProfile</h2>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-3">
+            <p>
+                <label>Title</label>
+                <input type="text" asp-for="JobProfile.Title" />
+            </p>
+
+            <p>
+                <label>UrlName</label>
+                <input type="text" asp-for="JobProfile.UrlName" />
+            </p>
+
+            <p>
+                <label>Select task items</label>
+            </p>
+            <ul>
+                @foreach (var taskItem in Model.TaskItems)
+                {
+                    <li>
+                        <label><input value="@taskItem" type="checkbox" name="JobProfile.TaskItems">@taskItem</label>
+                    </li>
+                }
+            </ul>
+            <p>
+                <label>Select Abilities</label>
+            </p>
+            <ul>
+                @foreach (var ability in Model.Abilities)
+                {
+                    <li>
+                        <label><input value="@ability" type="checkbox" name="JobProfile.AbilityList">@ability</label>
+                    </li>
+                }
+            </ul>
+            
+            <p>
+                <label>Select Skills items</label>
+            </p>
+            <ul>
+                @foreach (var skill in Model.Skills)
+                {
+                    <li>
+                        <label><input value="@skill" type="checkbox" name="StepDetail.SkillList">@skill</label>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+    <button type="submit">Save Job Profile Details</button>
+</form>
+
+

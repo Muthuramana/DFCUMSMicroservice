@@ -20,16 +20,15 @@
             </p>
             
             <p>
-                <label>Select task items</label>
+                <label>Select Question Type </label>
             </p>
-            <ul>
-                @foreach (var taskItem in Model.TaskItems)
-                {
-                    <li>
-                        <label><input value="@taskItem" type="checkbox" name="StepDetail.Answers">@taskItem</label>
-                    </li>
-                }
-            </ul>
+                
+            <select asp-for="StepDetail.FrameworkItemType">
+                <option value="Skill"> Skill</option>
+                <option value="TaskItem"> Task</option>
+                <option value="Ablity"> Ability</option>
+            </select>
+       
         </div>
 
     </div>

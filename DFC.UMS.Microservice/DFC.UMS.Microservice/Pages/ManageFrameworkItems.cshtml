@@ -1,0 +1,31 @@
+﻿@page
+@model DFC.UMS.Microservice.Pages.ManageFrameworkItemsModel
+@{
+    ViewData["Title"] = "ManageFrameworkItems";
+}
+
+<h2>Manage Framework Items</h2>
+
+<h2>Manage Step Details</h2>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-3">
+            <p>
+                <label>Abilities</label>
+                <input type="text" asp-for="AbilityList" />
+            </p>
+            <p>
+                <label>Skills</label>
+                <input type="text" asp-for="SkillList" />
+            </p>
+            <p>
+                <label>Tasks</label>
+                <input type="text" asp-for="TaskList" />
+            </p>
+        </div>
+
+    </div>
+    <button type="submit">Save Framework Details</button>
+</form>
+

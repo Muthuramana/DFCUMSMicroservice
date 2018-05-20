@@ -8,6 +8,7 @@ namespace DFC.UMS.Microservice.Models
         [BsonId]
         public int QuestionId { get; set; }
         public string QuestionDescription { get; set; }
-        public IEnumerable<string> Answers { get; set; }
+        public string FrameworkItemType { get; set; }
+
     }
 }

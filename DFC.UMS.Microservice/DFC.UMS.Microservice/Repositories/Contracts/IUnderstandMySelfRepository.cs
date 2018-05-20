@@ -1,16 +1,28 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using DFC.UMS.Microservice.Models;
+using DFC.UMS.Microservice.Models.Framework;
 
 namespace DFC.UMS.Microservice.Repositories.Contracts
 {
     public interface IUnderstandMySelfRepository
     {
-        Task<StepDetail> GetStepByNumber(int number);
-        Task SaveStepDetails(StepDetail stepDetail);
+        Task<StepDetail> GetStepByNumberAsync(int number);
+        Task SaveStepDetailsAsync(StepDetail stepDetail);
         Task SaveJobProfileAsync(JobProfile jobProfile);
-        Task SaveAnswer(StepAnswer savedAnswer);
+        Task SaveAnswerAsync(StepAnswer savedAnswer);
         Task<IEnumerable<StepAnswer>> GetStepsAnswersBySessionId(string sessionId);
+
+        Task SaveTaskItemAsync(TaskItem taskItem);
+
+        IEnumerable<TaskItem> GetAllTaskItems();
+
+        Task SaveSkillAsync(Skill skill);
+
+        IEnumerable<Skill> GetAllSkills();
+
+        Task SaveAbilityAsync(Ability ability);
+
+        IEnumerable<Ability> GetAllAbilities();
     }
 }

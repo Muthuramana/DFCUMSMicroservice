@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DFC.UMS.Microservice",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Models",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories"
   ],
+  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages\\Step2.cshtml.cs",
   "PreviewInSolutionExplorer": false
 }

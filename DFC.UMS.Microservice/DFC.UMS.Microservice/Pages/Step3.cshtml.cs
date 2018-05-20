@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DFC.UMS.Microservice.Models;
 using DFC.UMS.Microservice.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +22,23 @@ namespace DFC.UMS.Microservice.Pages
         [BindProperty]
         public StepDetail Step { get; set; } = new StepDetail();
 
+        public IEnumerable<string> Answers { get; set; }
+
         public async Task OnGetAsync()
         {
-            Step = await understandMySelfRepository.GetStepByNumber(3);
+            Step = await understandMySelfRepository.GetStepByNumberAsync(3);
+            switch (Step.FrameworkItemType?.ToLower())
+            {
+                case "skill":
+                    Answers = understandMySelfRepository.GetAllSkills().Select(skill => skill.Description);
+                    break;
+                case "ability":
+                    Answers = understandMySelfRepository.GetAllAbilities().Select(skill => skill.Description);
+                    break;
+                case "taskitem":
+                    Answers = understandMySelfRepository.GetAllTaskItems().Select(skill => skill.Description);
+                    break;
+            }
             SavedAnswer.QuestionId = Step.QuestionId;
             SavedAnswer.SessionId = HttpContext.Session.Id;
         }
@@ -33,7 +49,7 @@ namespace DFC.UMS.Microservice.Pages
                 return Page();
             }
 
-            await understandMySelfRepository.SaveAnswer(SavedAnswer);
+            await understandMySelfRepository.SaveAnswerAsync(SavedAnswer);
 
             return RedirectToPage("/Results");
         }

@@ -19,10 +19,8 @@ namespace DFC.UMS.Microservice.Pages
         [BindProperty]
         public StepDetail StepDetail { get; set; }
 
-        public IEnumerable<string> TaskItems { get; set; }
         public void OnGet()
         {
-            TaskItems = new List<string>{"Travelling", "public speaking", "public relations", "investigative work", "writing"};
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -32,9 +30,7 @@ namespace DFC.UMS.Microservice.Pages
                 return Page();
             }
 
-            await understandMySelfRepository.SaveStepDetails(StepDetail);
-
-            TaskItems = new List<string> { "Travelling", "public speaking", "public relations", "investigative work", "writing" };
+            await understandMySelfRepository.SaveStepDetailsAsync(StepDetail);
 
             return Page();
         }
