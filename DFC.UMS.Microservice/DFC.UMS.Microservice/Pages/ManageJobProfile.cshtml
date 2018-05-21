@@ -28,7 +28,7 @@
                     @foreach (var taskItem in Model.TaskItems)
                     {
                         <li>
-                            <label><input value="@taskItem" type="checkbox" name="JobProfile.TaskItems">@taskItem</label>
+                            <input value="@taskItem" type="checkbox" name="JobProfile.TaskItems">  <label>@taskItem</label>
                         </li>
                     }
                 </ul>
@@ -42,7 +42,7 @@
                     @foreach (var ability in Model.Abilities)
                     {
                         <li>
-                            <label><input value="@ability" type="checkbox" name="JobProfile.AbilityList">@ability</label>
+                            <input value="@ability" type="checkbox" name="JobProfile.AbilityList"> <label>@ability</label>
                         </li>
                     }
                 </ul>
@@ -57,7 +57,7 @@
                     @foreach (var skill in Model.Skills)
                     {
                         <li>
-                            <label><input value="@skill" type="checkbox" name="JobProfile.SkillList">@skill</label>
+                            <input value="@skill" type="checkbox" name="JobProfile.SkillList">    <label>@skill</label>
                         </li>
                     }
                 </ul>
