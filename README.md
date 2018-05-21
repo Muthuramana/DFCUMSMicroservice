@@ -17,7 +17,7 @@ http://localhost:5007/LoadAllData
 
 <h3> Backend Pages </h3>
 <dl>
-  <dt>Manage Frame work items</dt> <dd>http://localhost:5007/ManageFrameworkItems </dd>
-   <dt>Manage job profiles</dt> <dd>http://localhost:5007/ManageJobProfile </dd>
-  <dt> Manage Step details work items</dt> <dd>http://localhost:5007/ManageStepDetails </dd>
+  <dt>Manage Frame work items</dt> <dd> http://localhost:5007/ManageFrameworkItems </dd>
+   <dt>Manage job profiles</dt> <dd> http://localhost:5007/ManageJobProfile </dd>
+  <dt> Manage Step details work items</dt> <dd> http://localhost:5007/ManageStepDetails </dd>
   </dl>
