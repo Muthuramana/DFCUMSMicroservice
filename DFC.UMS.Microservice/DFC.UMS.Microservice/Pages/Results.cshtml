@@ -8,10 +8,23 @@
 <div class="row">
     <div class="col-md-3">
         <h2>@Model.ResultsMessage</h2>
-        
-        @foreach (var jobProfile in Model.JobProfiles)
+
+        @if (Model.JobProfiles != null && Model.JobProfiles.Any())
         {
-            <a href=""> @jobProfile.Title </a>
+            <ul>
+                @foreach (var jobProfile in Model.JobProfiles)
+                {
+                    <li>
+                        <h3>
+                        <a href="@jobProfile.UrlName"> @jobProfile.Title </a>
+                        </h3>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <h2>No results found.</h2>
         }
     </div>
 

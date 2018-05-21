@@ -30,11 +30,13 @@ namespace DFC.UMS.Microservice.Pages
         {
             await understandMySelfRepository.SaveJobProfileAsync(JobProfile);
 
-            return Page();
+            return RedirectToPage("/managejobprofile");
         }
         public void OnGet()
         {
-
+            TaskItems = understandMySelfRepository.GetAllTaskItems().Select(item => item.Description);
+            Abilities = understandMySelfRepository.GetAllAbilities().Select(item => item.Description);
+            Skills = understandMySelfRepository.GetAllSkills().Select(item => item.Description);
         }
     }
 }

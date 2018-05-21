@@ -14,10 +14,14 @@ namespace DFC.UMS.Microservice.Pages
         {
             this.understandMySelfRepository = understandMySelfRepository;
         }
+
+        [BindProperty]
         public string TaskList { get; set; }
 
+        [BindProperty]
         public string SkillList { get; set; }
 
+        [BindProperty]
         public string AbilityList { get; set; }
         public void OnGet()
         {
@@ -41,13 +45,7 @@ namespace DFC.UMS.Microservice.Pages
                 await understandMySelfRepository.SaveTaskItemAsync(new TaskItem { Description = task });
             }
 
-            TaskList = string.Empty;
-
-            SkillList = string.Empty;
-
-            AbilityList = string.Empty;
-
-            return Page();
+            return RedirectToPage("/manageframeworkItems");
         }
     }
 }

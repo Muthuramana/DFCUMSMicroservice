@@ -4,9 +4,11 @@
     "\\DFC.UMS.Microservice",
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice",
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Models",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Models\\Framework",
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories"
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories\\Contracts"
   ],
-  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages\\Step2.cshtml.cs",
+  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages\\ManageJobProfile.cshtml.cs",
   "PreviewInSolutionExplorer": false
 }

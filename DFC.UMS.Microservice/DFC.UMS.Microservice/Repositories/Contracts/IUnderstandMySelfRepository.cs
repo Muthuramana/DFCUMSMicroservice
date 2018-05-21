@@ -24,5 +24,6 @@ namespace DFC.UMS.Microservice.Repositories.Contracts
         Task SaveAbilityAsync(Ability ability);
 
         IEnumerable<Ability> GetAllAbilities();
+        IEnumerable<JobProfile> GetJobProfilesByFilter(SelectedAnswerFilter selectedAnswerFilter);
     }
 }

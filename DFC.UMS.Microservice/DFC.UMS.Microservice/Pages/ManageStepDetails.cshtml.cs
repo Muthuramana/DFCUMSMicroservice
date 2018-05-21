@@ -32,7 +32,7 @@ namespace DFC.UMS.Microservice.Pages
 
             await understandMySelfRepository.SaveStepDetailsAsync(StepDetail);
 
-            return Page();
+            return RedirectToPage("/managestepdetails");
         }
     }
 }

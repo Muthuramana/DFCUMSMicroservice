@@ -22,37 +22,46 @@
             <p>
                 <label>Select task items</label>
             </p>
-            <ul>
-                @foreach (var taskItem in Model.TaskItems)
-                {
-                    <li>
-                        <label><input value="@taskItem" type="checkbox" name="JobProfile.TaskItems">@taskItem</label>
-                    </li>
-                }
-            </ul>
+            @if (Model.TaskItems != null)
+            {
+                <ul>
+                    @foreach (var taskItem in Model.TaskItems)
+                    {
+                        <li>
+                            <label><input value="@taskItem" type="checkbox" name="JobProfile.TaskItems">@taskItem</label>
+                        </li>
+                    }
+                </ul>
+            }
             <p>
                 <label>Select Abilities</label>
             </p>
-            <ul>
-                @foreach (var ability in Model.Abilities)
-                {
-                    <li>
-                        <label><input value="@ability" type="checkbox" name="JobProfile.AbilityList">@ability</label>
-                    </li>
-                }
-            </ul>
+            @if (Model.Abilities != null)
+            {
+                <ul>
+                    @foreach (var ability in Model.Abilities)
+                    {
+                        <li>
+                            <label><input value="@ability" type="checkbox" name="JobProfile.AbilityList">@ability</label>
+                        </li>
+                    }
+                </ul>
+            }
             
             <p>
                 <label>Select Skills items</label>
             </p>
-            <ul>
-                @foreach (var skill in Model.Skills)
-                {
-                    <li>
-                        <label><input value="@skill" type="checkbox" name="StepDetail.SkillList">@skill</label>
-                    </li>
-                }
-            </ul>
+            @if (Model.Skills != null)
+            {
+                <ul>
+                    @foreach (var skill in Model.Skills)
+                    {
+                        <li>
+                            <label><input value="@skill" type="checkbox" name="JobProfile.SkillList">@skill</label>
+                        </li>
+                    }
+                </ul>
+            }
         </div>
 
     </div>
