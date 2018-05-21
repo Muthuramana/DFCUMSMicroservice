@@ -6,7 +6,7 @@
 
 
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-6">
         <h2>@Model.ResultsMessage</h2>
 
         @if (Model.JobProfiles != null && Model.JobProfiles.Any())
@@ -16,8 +16,10 @@
                 {
                     <li>
                         <h3>
-                        <a href="@jobProfile.UrlName"> @jobProfile.Title </a>
+                            <a href="@jobProfile.UrlName"> @jobProfile.Title </a>
                         </h3>
+                        
+                        <p> @jobProfile.Overview</p>
                     </li>
                 }
             </ul>

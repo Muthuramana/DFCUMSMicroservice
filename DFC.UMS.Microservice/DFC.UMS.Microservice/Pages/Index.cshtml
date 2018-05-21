@@ -6,8 +6,10 @@
 
 <form method="POST">
     <div class="row">
-        <div class="col-md-3">
-            <h2>@Model.Step.QuestionId - @Model.Step.QuestionDescription</h2>
+        <div class="col-md-6">
+            <h2>Step Number : @Model.Step.QuestionId </h2>
+            
+            <p> @Model.Step.QuestionDescription</p>
             
             @if (Model.Answers != null)
             {

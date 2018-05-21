@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DFC.UMS.Microservice.Models;
@@ -146,9 +147,9 @@ namespace DFC.UMS.Microservice.Repositories
 
         public IEnumerable<JobProfile> GetJobProfilesByFilter(SelectedAnswerFilter selectedAnswerFilter)
         {
-            return jobprofileCollection.AsQueryable()?.ToList().Where(jp => selectedAnswerFilter.SkillList != null && selectedAnswerFilter.SkillList.Any() && jp.SkillList.Any(sk => selectedAnswerFilter.SkillList.Contains(sk))
-            || selectedAnswerFilter.AbilityList != null && selectedAnswerFilter.AbilityList.Any() && jp.AbilityList.Any(ab => selectedAnswerFilter.AbilityList.Contains(ab))
-            || selectedAnswerFilter.TaskItems != null && selectedAnswerFilter.TaskItems.Any() && jp.TaskItems.Any(ti => selectedAnswerFilter.TaskItems.Contains(ti))
+            return jobprofileCollection.AsQueryable()?.ToList().Where(jp => selectedAnswerFilter.SkillList != null && selectedAnswerFilter.SkillList.Any() && jp.SkillList.Any(sk => selectedAnswerFilter.SkillList.Contains(sk, StringComparer.CurrentCultureIgnoreCase))
+            || selectedAnswerFilter.AbilityList != null && selectedAnswerFilter.AbilityList.Any() && jp.AbilityList.Any(ab => selectedAnswerFilter.AbilityList.Contains(ab, StringComparer.CurrentCultureIgnoreCase))
+            || selectedAnswerFilter.TaskItems != null && selectedAnswerFilter.TaskItems.Any() && jp.TaskItems.Any(ti => selectedAnswerFilter.TaskItems.Contains(ti, StringComparer.CurrentCultureIgnoreCase))
             );
         }
     }

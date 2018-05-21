@@ -9,6 +9,6 @@ namespace DFC.UMS.Microservice.Models
         public Guid Id { get; set; } = new Guid();
         public string Title { get; set; }
         public string UrlName { get; set; }
-
+        public string Overview { get; set; }
     }
 }
