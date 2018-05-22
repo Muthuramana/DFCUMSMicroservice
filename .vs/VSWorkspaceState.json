@@ -7,8 +7,10 @@
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Models\\Framework",
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages",
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories\\Contracts"
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories\\Contracts",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\wwwroot",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\wwwroot\\css"
   ],
-  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages\\ManageJobProfile.cshtml.cs",
+  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages\\Results.cshtml",
   "PreviewInSolutionExplorer": false
 }

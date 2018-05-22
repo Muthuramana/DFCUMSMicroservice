@@ -8,7 +8,7 @@
 
 <form method="POST">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <p>
                 <label>Title</label>
                 <input type="text" asp-for="JobProfile.Title" />
@@ -49,7 +49,7 @@
             }
             
             <p>
-                <label>Select Skills items</label>
+                <label>Select Skills</label>
             </p>
             @if (Model.Skills != null)
             {
