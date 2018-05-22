@@ -3,7 +3,7 @@
 <h2>Technology Used </h2>
 
 <ol>
-  <li> Razor Pages for UI </li>
+  <li> Razor Pages for Management UI and MVC for StepProcess </li>
    <li> Mongo DB for data storage </li>
  <li>  ASP.NET Core's built-in distributed cache for Session State </li>
 </ol>
