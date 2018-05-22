@@ -5,7 +5,7 @@
 <ol>
   <li> Razor Pages for UI </li>
    <li> Mongo DB for data storage </li>
- <li> Distributed Cache for Session State </li>
+ <li>  ASP.NET Core's built-in distributed cache for Session State </li>
 </ol>
 
 
