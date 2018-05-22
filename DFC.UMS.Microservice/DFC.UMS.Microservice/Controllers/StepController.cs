@@ -31,6 +31,19 @@ namespace DFC.UMS.Microservice.Controllers
             return View(model);
         }
 
+        [HttpPost("[controller]/{stepNumber}")]
+        public async Task<IActionResult> Index(StepViewModel model)
+        {
+            await understandMySelfRepository.SaveAnswerAsync(model.SavedAnswer);
+
+            if (model.SavedAnswer.QuestionId < 3)
+            {
+                var nextstep = model.SavedAnswer.QuestionId + 1;
+                return new RedirectResult($"/step/{nextstep}");
+            }
+            return new RedirectResult("/step/results");
+
+        }
 
         [Route("[controller]/results")]
         public async Task<IActionResult> Results()
@@ -58,7 +71,7 @@ namespace DFC.UMS.Microservice.Controllers
 
 
         [Route("api/[controller]/getstepdetails/{stepnumber}/{sessionid}")]
-        public async Task<IDictionary<string, string>> Get(int stepnumber, string sessionId)
+        public async Task<IDictionary<string, string>> GetAsync(int stepnumber, string sessionId)
         {
             var result = new ConcurrentDictionary<string, string>();
 
@@ -73,18 +86,59 @@ namespace DFC.UMS.Microservice.Controllers
             return result;
         }
 
-        [HttpPost("[controller]/{stepNumber}")]
-        public async Task<IActionResult> Index(StepViewModel model)
+        [Route("api/[controller]/results/{sessionid}")]
+        public async Task<IDictionary<string, string>> GetResultsAsync(string sessionId)
         {
-            await understandMySelfRepository.SaveAnswerAsync(model.SavedAnswer);
+            var result = new ConcurrentDictionary<string, string>();
 
-            if (model.SavedAnswer.QuestionId < 3)
+            var model = new ResultsViewModel
             {
-                var nextstep = model.SavedAnswer.QuestionId + 1;
-                return new RedirectResult($"/step/{nextstep}");
+                ResultsMessage = "Results page"
+            };
+            
+            var results = await understandMySelfRepository.GetStepsAnswersBySessionId(sessionId);
+            var stepAnswers = results as IList<StepAnswer> ?? results.ToList();
+            if (stepAnswers.Any())
+            {
+                model.JobProfiles = understandMySelfRepository.GetJobProfilesByFilter(new SelectedAnswerFilter
+                {
+                    AbilityList = stepAnswers.FirstOrDefault(ans => ans.FrameworkItemType.Equals("ability"))?.SavedAnswers,
+                    SkillList = stepAnswers.FirstOrDefault(ans => ans.FrameworkItemType.Equals("skill"))?.SavedAnswers,
+                    TaskItems = stepAnswers.FirstOrDefault(ans => ans.FrameworkItemType.Equals("taskitem"))?.SavedAnswers,
+                });
             }
-            return new RedirectResult("/step/results");
 
+            var viewString = await viewRenderService.RenderViewToStringAsync("/Views/Step/Results.cshtml", model);
+
+            result.TryAdd("results", viewString);
+
+            return result;
+        }
+        
+        [HttpPost("api/[controller]/savestepanswer/")]
+        public async Task<IDictionary<string, string>> SaveStepAnswersAsync([FromBody]StepAnswer stepAnswer)
+        {
+            var result = new ConcurrentDictionary<string, string>();
+
+            if (stepAnswer == null)
+            {
+                result.TryAdd("nextstep", "incorrect input supplied");
+                return result;
+            }
+
+            await understandMySelfRepository.SaveAnswerAsync(stepAnswer);
+
+            if (stepAnswer.QuestionId < 3)
+            {
+                var nextstep = stepAnswer.QuestionId + 1;
+                result.TryAdd("nextstep", $"api/step/{nextstep}");
+            }
+            else
+            {
+                result.TryAdd("nextstep", "api/step/results");
+            }
+
+            return result;
         }
     }
 }

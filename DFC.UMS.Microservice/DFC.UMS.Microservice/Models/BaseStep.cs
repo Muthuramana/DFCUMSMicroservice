@@ -28,13 +28,13 @@ namespace DFC.UMS.Microservice.Models
                 switch (frameworkItemType)
                 {
                     case "skill":
-                        stepViewModel.Answers = understandMySelfRepository.GetAllSkills().Select(skill => skill.Description).ToList();
+                        stepViewModel.Answers = understandMySelfRepository.GetAllSkills().Select(skill => skill.Description);
                         break;
                     case "ability":
-                        stepViewModel.Answers = understandMySelfRepository.GetAllAbilities().Select(skill => skill.Description).ToList();
+                        stepViewModel.Answers = understandMySelfRepository.GetAllAbilities().Select(skill => skill.Description);
                         break;
                     case "taskitem":
-                        stepViewModel.Answers = understandMySelfRepository.GetAllTaskItems().Select(skill => skill.Description).ToList();
+                        stepViewModel.Answers = understandMySelfRepository.GetAllTaskItems().Select(skill => skill.Description);
                         break;
                 }
                 stepViewModel.SavedAnswer.QuestionId = stepViewModel.Step.QuestionId;
