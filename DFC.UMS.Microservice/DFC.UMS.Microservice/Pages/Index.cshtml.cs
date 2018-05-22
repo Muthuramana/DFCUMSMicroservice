@@ -1,39 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DFC.UMS.Microservice.Models;
-using DFC.UMS.Microservice.Repositories.Contracts;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DFC.UMS.Microservice.Pages
 {
-    public class IndexModel : BaseStep
+    public class IndexModel : PageModel
     {
-        private readonly IUnderstandMySelfRepository understandMySelfRepository;
+        public string WelcomeMessage { get; set; } = "Welcome to the Understand myself Micro service";
 
-        public IndexModel(IUnderstandMySelfRepository understandMySelfRepository) : base(understandMySelfRepository)
+        public void OnGet()
         {
-            this.understandMySelfRepository = understandMySelfRepository;
-        }
-  
-
-        public async Task OnGetAsync()
-        {
-            await PageSetup(1);
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            await understandMySelfRepository.SaveAnswerAsync(SavedAnswer);
-
-            return RedirectToPage("/Step2");
+           
         }
     }
 }

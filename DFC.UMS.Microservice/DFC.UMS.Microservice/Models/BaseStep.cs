@@ -2,63 +2,62 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DFC.UMS.Microservice.Repositories.Contracts;
+using DFC.UMS.Microservice.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DFC.UMS.Microservice.Models
 {
-    public class BaseStep : PageModel
+    public class BaseStep : Controller
     {
         private readonly IUnderstandMySelfRepository understandMySelfRepository;
 
-        private const string sessionKey = "sessionId";
+        public const string SessionKey = "sessionId";
 
         public BaseStep(IUnderstandMySelfRepository understandMySelfRepository)
         {
             this.understandMySelfRepository = understandMySelfRepository;
         }
-        [BindProperty]
-        public StepAnswer SavedAnswer { get; set; } = new StepAnswer();
 
-        [BindProperty]
-        public StepDetail Step { get; set; } = new StepDetail();
-
-        public IEnumerable<string> Answers { get; set; }
-
-        public async Task PageSetup(int pageNumber)
+        public async Task PageSetup(StepViewModel stepViewModel, int pageNumber, string sessionId = null)
         {
-            Step = await understandMySelfRepository.GetStepByNumberAsync(pageNumber);
-            if (Step != null)
+            stepViewModel.Step = await understandMySelfRepository.GetStepByNumberAsync(pageNumber);
+            if (stepViewModel.Step != null)
             {
-                var frameworkItemType = Step.FrameworkItemType?.ToLower();
+                var frameworkItemType = stepViewModel.Step.FrameworkItemType?.ToLower();
                 switch (frameworkItemType)
                 {
                     case "skill":
-                        Answers = understandMySelfRepository.GetAllSkills().Select(skill => skill.Description);
+                        stepViewModel.Answers = understandMySelfRepository.GetAllSkills().Select(skill => skill.Description).ToList();
                         break;
                     case "ability":
-                        Answers = understandMySelfRepository.GetAllAbilities().Select(skill => skill.Description);
+                        stepViewModel.Answers = understandMySelfRepository.GetAllAbilities().Select(skill => skill.Description).ToList();
                         break;
                     case "taskitem":
-                        Answers = understandMySelfRepository.GetAllTaskItems().Select(skill => skill.Description);
+                        stepViewModel.Answers = understandMySelfRepository.GetAllTaskItems().Select(skill => skill.Description).ToList();
                         break;
                 }
-                SavedAnswer.QuestionId = Step.QuestionId;
-                SavedAnswer.FrameworkItemType = frameworkItemType;
+                stepViewModel.SavedAnswer.QuestionId = stepViewModel.Step.QuestionId;
+                stepViewModel.SavedAnswer.FrameworkItemType = frameworkItemType;
             }
             else
             {
-                Step = new StepDetail();
+                stepViewModel.Step = new StepDetail();
             }
-
-            var value = HttpContext.Session.GetString(sessionKey);
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(sessionId))
             {
-                value = HttpContext.Session.Id;
-                HttpContext.Session.SetString(sessionKey, value);
+                var value = HttpContext.Session.GetString(SessionKey);
+                if (string.IsNullOrEmpty(value))
+                {
+                    value = HttpContext.Session.Id;
+                    HttpContext.Session.SetString(SessionKey, value);
+                }
+                stepViewModel.SavedAnswer.SessionId = value;
             }
-            SavedAnswer.SessionId = value;
+            else
+            {
+                stepViewModel.SavedAnswer.SessionId = sessionId;
+            }
         }
     }
 }

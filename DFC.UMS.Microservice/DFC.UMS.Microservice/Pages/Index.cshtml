@@ -1,31 +1,5 @@
 ﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Step 1";
-}
+@model DFC.UMS.Microservice.Pages.IndexModel
+ 
 
-<form method="POST">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Step Number : @Model.Step.QuestionId </h2>
-            
-            <p> @Model.Step.QuestionDescription</p>
-            
-            @if (Model.Answers != null)
-            {
-                <ul>
-                    @foreach (var answer in Model.Answers)
-                    {
-                        <li>
-                            <input value="@answer" type="checkbox" name="SavedAnswer.SavedAnswers">  <label>@answer</label>
-                        </li>
-                    }
-                </ul>
-            } 
-        </div>
-    </div>
-    <button type="submit">Next</button>
-    <input asp-for="SavedAnswer.QuestionId" type="hidden" />
-    <input asp-for="SavedAnswer.SessionId" type="hidden" />
-    <input asp-for="SavedAnswer.FrameworkItemType" type="hidden" />
-</form>
+<h1>Tests</h1>

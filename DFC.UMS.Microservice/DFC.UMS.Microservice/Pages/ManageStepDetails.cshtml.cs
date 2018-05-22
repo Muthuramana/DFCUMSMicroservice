@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DFC.UMS.Microservice.Models;
 using DFC.UMS.Microservice.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;

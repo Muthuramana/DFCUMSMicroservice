@@ -1,0 +1,28 @@
+﻿@model DFC.UMS.Microservice.ViewModel.ResultsViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@Model.ResultsMessage</h2>
+
+        @if (Model.JobProfiles != null && Model.JobProfiles.Any())
+        {
+        <ul>
+            @foreach (var jobProfile in Model.JobProfiles)
+                {
+            <li>
+                <h3>
+                    <a href="@jobProfile.UrlName"> @jobProfile.Title </a>
+                </h3>
+
+                <p> @jobProfile.Overview</p>
+            </li>
+                }
+        </ul>
+        }
+        else
+        {
+        <h2>No results found.</h2>
+        }
+    </div>
+
+</div>

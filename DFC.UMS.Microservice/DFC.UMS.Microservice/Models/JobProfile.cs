@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DFC.UMS.Microservice.Models.Framework;
 
 namespace DFC.UMS.Microservice.Models

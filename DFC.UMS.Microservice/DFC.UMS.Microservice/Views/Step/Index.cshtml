@@ -1,16 +1,12 @@
-﻿@page
-@model Step3Model
-@{
-    ViewData["Title"] = "step 3";
-}
+﻿@model DFC.UMS.Microservice.ViewModel.StepViewModel
 
 <form method="POST">
     <div class="row">
         <div class="col-md-12">
             <h2>Step Number : @Model.Step.QuestionId </h2>
-            
+
             <p> @Model.Step.QuestionDescription</p>
-            
+
             @if (Model.Answers != null)
             {
                 <ul>
@@ -25,7 +21,7 @@
         </div>
     </div>
     <button type="submit">Next</button>
-    <input asp-for="SavedAnswer.QuestionId" type="hidden" />
-    <input asp-for="SavedAnswer.SessionId" type="hidden" />
-    <input asp-for="SavedAnswer.FrameworkItemType" type="hidden" />
+    @Html.HiddenFor(model => model.SavedAnswer.QuestionId)
+    @Html.HiddenFor(model => model.SavedAnswer.SessionId)
+    @Html.HiddenFor(model => model.SavedAnswer.FrameworkItemType)    
 </form>
