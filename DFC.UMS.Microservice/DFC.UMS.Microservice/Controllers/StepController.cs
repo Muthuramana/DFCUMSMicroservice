@@ -34,11 +34,11 @@ namespace DFC.UMS.Microservice.Controllers
         [HttpPost("[controller]/{stepNumber}")]
         public async Task<IActionResult> Index(StepViewModel model)
         {
-            await understandMySelfRepository.SaveAnswerAsync(model.SavedAnswer);
+            await understandMySelfRepository.SaveAnswerAsync(model.StepAnswer);
 
-            if (model.SavedAnswer.QuestionId < 3)
+            if (model.StepAnswer.QuestionId < 3)
             {
-                var nextstep = model.SavedAnswer.QuestionId + 1;
+                var nextstep = model.StepAnswer.QuestionId + 1;
                 return new RedirectResult($"/step/{nextstep}");
             }
             return new RedirectResult("/step/results");
@@ -70,7 +70,7 @@ namespace DFC.UMS.Microservice.Controllers
         }
 
 
-        [Route("api/[controller]/getstepdetails/{stepnumber}/{sessionid}")]
+        [Route("api/[controller]/{stepnumber}/{sessionid}")]
         public async Task<IDictionary<string, string>> GetAsync(int stepnumber, string sessionId)
         {
             var result = new ConcurrentDictionary<string, string>();

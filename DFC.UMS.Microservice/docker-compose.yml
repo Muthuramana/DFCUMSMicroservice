@@ -10,7 +10,7 @@ services:
         ports:
             - 27017:27017
 
-   DFC.UMS.Microservice:
+   dfc.ums.microservice:
     image: dfcumsmicroservice
     build:
       context: .

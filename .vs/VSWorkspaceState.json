@@ -3,14 +3,14 @@
     "",
     "\\DFC.UMS.Microservice",
     "\\DFC.UMS.Microservice\\DFC.UMS.Microservice",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Models",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Models\\Framework",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Repositories\\Contracts",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\wwwroot",
-    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\wwwroot\\css"
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Controllers",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Services",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Services\\Contracts",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\ViewModel",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Views",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Views\\Shared",
+    "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Views\\Step"
   ],
-  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Pages\\Results.cshtml",
+  "SelectedNode": "\\DFC.UMS.Microservice\\DFC.UMS.Microservice\\Controllers\\StepController.cs",
   "PreviewInSolutionExplorer": false
 }

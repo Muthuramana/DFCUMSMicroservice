@@ -37,8 +37,8 @@ namespace DFC.UMS.Microservice.Models
                         stepViewModel.Answers = understandMySelfRepository.GetAllTaskItems().Select(skill => skill.Description);
                         break;
                 }
-                stepViewModel.SavedAnswer.QuestionId = stepViewModel.Step.QuestionId;
-                stepViewModel.SavedAnswer.FrameworkItemType = frameworkItemType;
+                stepViewModel.StepAnswer.QuestionId = stepViewModel.Step.QuestionId;
+                stepViewModel.StepAnswer.FrameworkItemType = frameworkItemType;
             }
             else
             {
@@ -52,11 +52,11 @@ namespace DFC.UMS.Microservice.Models
                     value = HttpContext.Session.Id;
                     HttpContext.Session.SetString(SessionKey, value);
                 }
-                stepViewModel.SavedAnswer.SessionId = value;
+                stepViewModel.StepAnswer.SessionId = value;
             }
             else
             {
-                stepViewModel.SavedAnswer.SessionId = sessionId;
+                stepViewModel.StepAnswer.SessionId = sessionId;
             }
         }
     }

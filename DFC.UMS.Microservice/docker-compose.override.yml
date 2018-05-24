@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  DFC.UMS.Microservice:
+  dfc.ums.microservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

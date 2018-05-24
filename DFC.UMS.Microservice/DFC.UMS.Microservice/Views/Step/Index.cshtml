@@ -13,7 +13,7 @@
                     @foreach (var answer in Model.Answers)
                     {
                         <li>
-                            <input value="@answer" type="checkbox" name="SavedAnswer.SavedAnswers">  <label>@answer</label>
+                            <input value="@answer" type="checkbox" name="StepAnswer.SavedAnswers">  <label>@answer</label>
                         </li>
                     }
                 </ul>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <button type="submit">Next</button>
-    @Html.HiddenFor(model => model.SavedAnswer.QuestionId)
-    @Html.HiddenFor(model => model.SavedAnswer.SessionId)
-    @Html.HiddenFor(model => model.SavedAnswer.FrameworkItemType)    
+    @Html.HiddenFor(model => model.StepAnswer.QuestionId)
+    @Html.HiddenFor(model => model.StepAnswer.SessionId)
+    @Html.HiddenFor(model => model.StepAnswer.FrameworkItemType)    
 </form>
