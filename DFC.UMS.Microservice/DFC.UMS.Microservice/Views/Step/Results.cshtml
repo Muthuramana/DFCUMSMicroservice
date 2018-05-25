@@ -7,7 +7,7 @@
         @if (Model.JobProfiles != null && Model.JobProfiles.Any())
         {
         <ul>
-            @foreach (var jobProfile in Model.JobProfiles)
+            @foreach (var jobProfile in Model.JobProfiles.OrderBy(p =>p.Title))
                 {
             <li>
                 <h3>
