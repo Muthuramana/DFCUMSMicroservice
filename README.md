@@ -11,7 +11,7 @@
 
 <h3> Data Loading </h3>
 After the application is running
-Go to this appkication page to load initial data data into the Mongo DB
+Go to this application page to load initial data data into the Mongo DB
 
 http://localhost:5007/LoadAllData
 
