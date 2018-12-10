@@ -9,7 +9,7 @@ services:
           - MONGO_LOG_DIR=/dev/null        
         ports:
             - 27017:27017
-
+            
    dfc.ums.microservice:
     image: dfcumsmicroservice
     build:
